@@ -10,6 +10,9 @@ cd <project-name>
 composer install
 cp .env.example .env 
 php artisan key:generate
-php artisan cache:clear && php artisan config:clear 
+php artisan cache:clear
+php artisan config:clear
+php artisan route:cache
+php artisan storage:link
 php artisan serve 
 ```

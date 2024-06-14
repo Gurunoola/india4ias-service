@@ -39,7 +39,7 @@ class AuthController extends Controller
      */
     public function register(StoreUserRequest $request)
     {
-        if (Gate::denies('isAdmin')) {
+        if (Gate::denies('isAdmin') && Gate::denies('isSuperAdmin')) {
             return response()->json(['message' => 'Forbidden'], Response::HTTP_FORBIDDEN);
         }
         $request->validated($request->only(['name', 'email', 'password','role']));

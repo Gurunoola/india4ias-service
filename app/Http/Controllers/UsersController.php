@@ -50,7 +50,7 @@ class UsersController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
-        if (Gate::denies('isAdmin')) {
+        if (Gate::denies('isAdmin') && Gate::denies('isSuperAdmin')) {
             return response()->json(['message' => 'Forbidden'], Response::HTTP_FORBIDDEN);
         }
 
@@ -100,7 +100,7 @@ class UsersController extends Controller
      */
     public function update(StoreUserRequest $request, $id)
     {
-        if (Gate::denies('isAdmin')) {
+        if (Gate::denies('isAdmin') && Gate::denies('isSuperAdmin')) {
             return response()->json(['message' => 'Forbidden'], Response::HTTP_FORBIDDEN);
         }
 
@@ -120,7 +120,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        if (Gate::denies('isAdmin')) {
+        if (Gate::denies('isAdmin') && Gate::denies('isSuperAdmin')) {
             return response()->json(['message' => 'Forbidden'], Response::HTTP_FORBIDDEN);
         }
 
@@ -137,7 +137,7 @@ class UsersController extends Controller
      */
     public function trashed(Request $request)
     {
-        if (Gate::denies('isAdmin')) {
+        if (Gate::denies('isAdmin') && Gate::denies('isSuperAdmin')) {
             return response()->json(['message' => 'Forbidden'], Response::HTTP_FORBIDDEN);
         }
 
@@ -157,7 +157,7 @@ class UsersController extends Controller
      */
     public function restore($id)
     {
-        if (Gate::denies('isAdmin')) {
+        if (Gate::denies('isAdmin') && Gate::denies('isSuperAdmin')) {
             return response()->json(['message' => 'Forbidden'], Response::HTTP_FORBIDDEN);
         }
 
@@ -175,7 +175,7 @@ class UsersController extends Controller
      */
     public function forceDelete($id)
     {
-        if (Gate::denies('isAdmin')) {
+        if (Gate::denies('isAdmin') && Gate::denies('isSuperAdmin')) {
             return response()->json(['message' => 'Forbidden'], Response::HTTP_FORBIDDEN);
         }
 
